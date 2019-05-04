@@ -11,7 +11,6 @@ import  {
   ArcRotateCamera,
   Vector3,
   HemisphericLight,
-  Mesh,
   Color3,
   Tools,
   MeshBuilder,
@@ -121,8 +120,8 @@ class Scene3d extends Component {
     * for loading files
     */ 
     let loader = new AssetsManager(this.scene) 
-    // Arguments: "ID", "Root URL", "URL Prefix", "Filename"    
-    let loadBikeModel = loader.addMeshTask("bike", "", "", "bike.babylon")
+    let loadBikeModel = loader.addMeshTask("bike", "", "https://s3-us-west-1.amazonaws.com/e-bikes/", "bike.babylon")
+
     /*
     *  Loader is given a callback to run when the model has loaded
     *  the variable t is our imported scene. You can use
@@ -159,7 +158,7 @@ class Scene3d extends Component {
 
   loadLogo() {
 
-    let url = 'pxslogo.png'
+    let url = 'ebikeslogo.png';
     var materialPlane = new StandardMaterial("logo", this.scene);
     materialPlane.diffuseTexture = new Texture(url, this.scene);
     materialPlane.diffuseTexture.hasAlpha = true
